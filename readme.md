@@ -16,6 +16,10 @@ It helps manage drivers, routes, and orders with real-time metrics and beautiful
 - **Backend**: Node.js, Express.js, TypeScript
 - **Database**: PostgreSQL (via Prisma ORM)
 - **Deployment**: Render (Backend + Database)
+## Links
+- Frontend Link https://mygreecartapp.netlify.app/
+- Backend Link https://green-cart-rqmb.onrender.com
+- Demo Link https://youtu.be/9-62TjlyMfA?feature=shared
 
 ![alt text]({2E2BAD87-960C-42CF-B0B4-2100018D3287}.png)
 ![alt text]({79CBFE2D-B838-4843-AF8D-C8B35F5E7CA5}.png)
