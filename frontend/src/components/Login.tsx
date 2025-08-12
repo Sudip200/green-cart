@@ -1,23 +1,6 @@
 
-import React, { useState, useEffect, createContext, useContext, type ReactNode } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate, useNavigate } from "react-router-dom";
-import { PieChart, Pie, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, LineChart, Line } from "recharts";
-import { 
-  Menu, 
-  X, 
-  Home, 
-  Users, 
-  MapPin, 
-  Package, 
-  Sun, 
-  Moon, 
-  LogOut,
-  TrendingUp,
-  Clock,
-  DollarSign,
-  AlertCircle,
-  type LucideIcon
-} from "lucide-react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const LoginPage: React.FC = () => {

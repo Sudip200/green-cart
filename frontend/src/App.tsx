@@ -1,6 +1,5 @@
-import React, { useState, useEffect, createContext, useContext, type ReactNode } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
-import { PieChart, Pie, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, LineChart, Line } from "recharts";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import { 
   Menu, 
   X, 
@@ -11,10 +10,6 @@ import {
   Sun, 
   Moon, 
   LogOut,
-  TrendingUp,
-  Clock,
-  DollarSign,
-  AlertCircle,
   type LucideIcon
 } from "lucide-react";
 import LoginPage from "./components/Login";
