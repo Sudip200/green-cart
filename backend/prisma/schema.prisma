@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  role      String   @default("User")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Driver {
+  id            Int      @id @default(autoincrement())
+  name          String
+  shiftHours    Int
+  pastWeekHours String   // Store as pipe-separated string: "6|8|7|7|7|6|10"
+  status        String   @default("Active") // Active, Break, Offline
+  rating        Float    @default(0.0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("drivers")
+}
+
+model Route {
+  id           Int     @id @default(autoincrement())
+  routeId      Int     @unique
+  distanceKm   Float
+  trafficLevel String  // High, Medium, Low
+  baseTimeMin  Int
+  popularity   Int     @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  orders Order[]
+
+  @@map("routes")
+}
+
+model Order {
+  id           Int      @id @default(autoincrement())
+  orderId      Int      @unique
+  valueRs      Float
+  routeId      Int
+  deliveryTime String   // Store as "HH:MM" format
+  status       String   @default("Pending") // Delivered, In Transit, Delayed, Pending
+  customer     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  route Route @relation(fields: [routeId], references: [routeId], onDelete: Cascade)
+
+  @@map("orders")
+}
